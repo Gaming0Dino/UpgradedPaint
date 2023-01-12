@@ -56,13 +56,13 @@ class drawing(object):
                                 self.rad -= 1
                                 self.tick += 1
                                 pygame.draw.rect(
-                                    win, (255, 255, 255), (710, 342, 80, 35))
+                                    win, (255, 255, 255), (710, 388, 80, 35))
 
                             if button.action == 3 and self.rad < 60:
                                 self.rad += 1
                                 self.tick += 1
                                 pygame.draw.rect(
-                                    win, (255, 255, 255), (710, 342, 80, 35))
+                                    win, (255, 255, 255), (710, 388, 80, 35))
                             if button.action == 5:
                                 color_code = colorchooser.askcolor(title ="Choose color")
                                 color_code = color_code[0]
