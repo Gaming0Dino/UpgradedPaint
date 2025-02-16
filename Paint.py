@@ -68,6 +68,24 @@ class drawing(object):
                                 color_code = color_code[0]
                                 self.color = color_code
 
+                            if button.action == 6 and self.rad > 2:
+                                if self.rad < 12:
+                                    self.rad = 2
+                                else:
+                                    self.rad -= 10
+                                self.tick += 1
+                                pygame.draw.rect(
+                                    win, (255, 255, 255), (710, 388, 80, 35))
+
+                            if button.action == 7 and self.rad < 120:
+                                if self.rad > 110:
+                                    self.rad = 120
+                                else:
+                                    self.rad += 10
+                                self.tick += 1
+                                pygame.draw.rect(
+                                    win, (255, 255, 255), (710, 388, 80, 35))
+
         for button in list2:
             if button.action == 4:
                 button.text = str(self.rad)
@@ -100,13 +118,13 @@ def drawHeader(win):
     pygame.draw.rect(win, (175, 171, 171), (0, 0, 800, 35))
     pygame.draw.rect(win, (175, 171, 171), (699, 33, 101, 35))
     pygame.draw.rect(win, (175, 171, 171), (699, 302, 101, 35))
-    pygame.draw.rect(win, (175, 171, 171), (699, 434, 101, 35))
+    pygame.draw.rect(win, (175, 171, 171), (699, 480, 101, 35))
     pygame.draw.rect(win, (0, 0, 0), (0, 0, 700, 35), 2)
     pygame.draw.rect(win, (0, 0, 0), (699, 0, 101, 35), 2)
     pygame.draw.rect(win, (0, 0, 0), (699, 33, 101, 767), 2)
     pygame.draw.rect(win, (0, 0, 0), (699, 33, 101, 35), 2)
     pygame.draw.rect(win, (0, 0, 0), (699, 302, 101, 35), 2)
-    pygame.draw.rect(win, (0, 0, 0), (699, 434, 101, 35), 2)
+    pygame.draw.rect(win, (0, 0, 0), (699, 480, 101, 35), 2)
 
     # Printing header
     font = pygame.font.SysFont('comicsansms', 30)
@@ -129,7 +147,7 @@ def drawHeader(win):
 
     toolText = font.render('Tools', 1, (0, 0, 0))
     win.blit(toolText, (int(750 - toolText.get_width() / 2),
-                        int(896 / 2 - toolText.get_height() / 2 + 2)))
+                        int(988 / 2 - toolText.get_height() / 2 + 2)))
 
 def draw(win):
     player1.click(win, Buttons_color, Buttons_other)
@@ -191,14 +209,16 @@ moreDisplay = button(707, 224+33, 86, 40, (201, 201, 201), (0, 0, 0), 0, 5, 'Mor
 
 smallerButton = button(707, 270+72, 40, 40, (201, 201, 201), (0, 0, 0), 0, 2, '-')
 biggerButton = button(753, 270+72, 40, 40, (201, 201, 201), (0, 0, 0), 0, 3, '+')
+smallerButton2 = button(707, 362+72, 40, 40, (201, 201, 201), (5, 0, 0), 0, 6, '--')
+biggerButton2 = button(753, 362+72, 40, 40, (201, 201, 201), (0, 0, 0), 0, 7, '++')
 sizeDisplay = button(707, 316+72, 86, 40, (0, 0, 0), (0, 0, 0), 1, 4, 'Size')
 
 # Defining other buttons
-clrButton = button(707, 362+113, 86, 40, (201, 201, 201), (0, 0, 0), 0, 1, 'Clear')
+clrButton = button(707, 408+113, 86, 40, (201, 201, 201), (0, 0, 0), 0, 1, 'Clear')
 
 Buttons_color = [blueButton, redButton, greenButton, orangeButton,
                 yellowButton, purpleButton, blackButton, whiteButton]
-Buttons_other = [clrButton, smallerButton, biggerButton,
+Buttons_other = [clrButton, smallerButton, biggerButton, smallerButton2, biggerButton2,
                 sizeDisplay, moreDisplay]
 
 main_loop()
